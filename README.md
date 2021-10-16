@@ -3,33 +3,6 @@
 This project is a demonstration of how to interact with S3 in Quarkus.
 It uses LocalStack as a S3 mock server.
 
-## Running LocalStack
-
-```
-docker-compose up --build -d
-```
-
-### Create a bucket
-Enter in the container's terminal:
-```
-docker exec -it $(docker ps -f name=amazon-s3-quickstart-localstack-1 -q) sh
-```
-Then create a profile:
-```
-aws configure --profile localstack
-```
-Provide those data:
-- test-key
-- test-secret
-- us-east-1
-
-Now you can create a bucket:
-```
-aws s3 mb s3://quarkus.s3.quickstart --profile localstack --endpoint-url=http://localhost:4566
-```
-
-> **_NOTE:_** Quarkus is already configured to work with those data
-
 ## Running the application in dev mode
 
 You can run your application in dev mode that enables live coding using:
@@ -40,6 +13,16 @@ You can run your application in dev mode that enables live coding using:
 > **_NOTE:_**  Quarkus now ships with a Dev UI, which is available in dev mode only at http://localhost:8080/q/dev/.
 
 You can also connect to http://localhost:8080/s3.html
+
+### Dev Services
+
+In dev mode, the app will automatically raise a fully configured MinIO container with an initial bucket:
+>quarkus.s3.quickstart
+
+You need a running _docker daemon_ to make it work.
+
+It can be disabled by setting this property in _application.yaml_:
+> %dev.quarkus.s3.enabled: _false_
 
 ## Packaging and running the application
 
