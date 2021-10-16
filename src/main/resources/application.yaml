@@ -1,0 +1,21 @@
+quarkus:
+  s3:
+    endpoint-override: http://localhost:9000
+    aws:
+      region: us-east-1
+      credentials:
+        type: static
+        static-provider:
+          access-key-id: test-key
+          secret-access-key: test-secret
+  datasource:
+    username: pippo
+    password: pluto
+
+bucket:
+  name: quarkus.s3.quickstart
+
+"%dev":
+  quarkus:
+    s3:
+      enabled: true
