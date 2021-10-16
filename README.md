@@ -1,7 +1,7 @@
 # amazon-s3-quickstart Project
 
 This project is a demonstration of how to interact with S3 in Quarkus.
-It uses LocalStack as a S3 mock server.
+It uses MinIO as a S3 server.
 
 ## Running the application in dev mode
 
